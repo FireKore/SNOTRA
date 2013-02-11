@@ -122,6 +122,7 @@ std::list<unsigned char>::iterator Frame::printAddressBloc(std::list<unsigned ch
     ip->print();
     delete ip;
   }
+  free(address);
   return it;
 }
 
