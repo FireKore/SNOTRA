@@ -119,7 +119,7 @@ std::list<unsigned char>::iterator Frame::printAddressBloc(std::list<unsigned ch
       it++;
     }
     Ip* ip = new Ip(address, (int)*it);
-    ip->print();
+    std::cout << *ip << std::endl;
     delete ip;
   }
   return it;

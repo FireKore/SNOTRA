@@ -1,7 +1,6 @@
 #ifndef __MAC_H__
 #define __MAC_H__
 
-#include <cctype>
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -9,11 +8,11 @@
 
 class Mac {
  public:
-  Mac(std::string str);
-  Mac(unsigned char* address);
-  unsigned char* getAddress();
-  void print();
-  bool isEqual(Mac mac);
+  Mac(std::string);
+  unsigned char* getAllAddress();
+  unsigned char getAddress(int);
+  friend std::ostream& operator<<(std::ostream&, Mac&);
+  friend bool operator==(Mac, Mac);
 
  private:
   unsigned char address[6];

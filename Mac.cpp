@@ -13,31 +13,30 @@ Mac::Mac(std::string str) {
   }
 }
 
-Mac::Mac(unsigned char* address_) {
-  for(int i = 0; i < 6; i++) {
-    address[i] = address_[i];
-  }
-}
-
-unsigned char* Mac::getAddress() {
+unsigned char* Mac::getAllAddress() {
   return address;
 }
 
-void Mac::print() {
-  int first = 0, second = 0;
-  for (int i = 0; i < 5; i++) {
-    first = address[i] / 16;
-    second = address[i] % 16;
-    std::cout << std::hex << first << second << ':';
-  }
-  first = (int)address[5] / 16;
-  second = (int)address[5] % 16;
-  std::cout << first << second << std::dec << std::endl;
+unsigned char Mac::getAddress(int i) {
+  return address[i];
 }
 
-bool Mac::isEqual(Mac mac) {
+std::ostream& operator<<(std::ostream& flux, Mac& mac) {
+  int first = 0, second = 0;
+  for (int i = 0; i < 5; i++) {
+    first = mac.getAddress(i) / 16;
+    second = mac.getAddress(i) % 16;
+    flux << std::hex << first << second << ':';
+  }
+  first = (int)mac.getAddress(5) / 16;
+  second = (int)mac.getAddress(5) % 16;
+  flux << first << second << std::dec;
+  return flux;
+}
+
+bool operator==(Mac mac1, Mac mac2) {
   for(int i = 0; i < 6; i++) {
-    if(address[i] != mac.address[i]) {
+    if(mac1.getAddress(i) != mac2.getAddress(i)) {
       return false;
     }
   }

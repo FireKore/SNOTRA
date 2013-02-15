@@ -4,7 +4,7 @@ PROGS=snotra
 
 all: $(PROGS)
 
-snotra: Ip.o Mac.o Frame.o main.o
+snotra: Ipv4.o Mask.o Mac.o main.o
 	g++ $^ -o $@
 
 clean:
@@ -14,7 +14,7 @@ depend:
 	@makedepend *.cpp -Y. > /dev/null 2>&1
 # DO NOT DELETE
 
-Main.o: Ip.h Mac.h
-Ip.o: Ip.h
+Main.o: Ipv4.h Mac.h
+Ip.o: Ipv4.h Ip.h Mask.h
+Mask.o: Mask.h
 Mac.o: Mac.h
-Frame.o: Frame.h Ip.h Mac.h
