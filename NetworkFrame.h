@@ -7,10 +7,12 @@
 
 class NetworkFrame : public Frame {
  public:
-  Ip* getIpSource();
-  void setIpSource(Ip*);
-  Ip* getIpDest();
-  void setIpDest(Ip*);
+  NetworkFrame();
+  virtual ~NetworkFrame();
+  Ip* getSourceIp();
+  void setSourceIp(Ip*);
+  Ip* getDestIp();
+  void setDestIp(Ip*);
   int getTTL();
   void setTTL(int);
   Protocole getProtocole();
@@ -22,8 +24,8 @@ class NetworkFrame : public Frame {
   bool isAlive();
 
  private:
-  Ip* ipSource;
-  Ip* ipDest;
+  Ip* sourceIp;
+  Ip* destIp;
   int ttl;
   Protocole protocole;
   TransportFrame data;

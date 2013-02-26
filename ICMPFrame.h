@@ -5,8 +5,16 @@
 
 class ICMPFrame : public TransportFrame {
  public:
+  ICMPFrame();
+  virtual ~ICMPFrame();
+  Ip* getSourceIp();
+  void setSourceIp(Ip*);
+  bool getIsRequest();
+  void setIsRequest(bool);
 
  private:
+  Ip* sourceIp;
+  bool isRequest;
 
 };
 

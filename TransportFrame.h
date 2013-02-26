@@ -5,6 +5,8 @@
 
 class TransportFrame : public Frame {
  public:
+  TransportFrame();
+  virtual ~TransportFrame();
 
  private:
 

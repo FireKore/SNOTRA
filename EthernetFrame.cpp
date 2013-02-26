@@ -1,19 +1,25 @@
 #include "EthernetFrame.h"
 
-Mac EthernetFrame::getMacSource() {
-  return macSource;
+EthernetFrame::EthernetFrame() {
 }
 
-void EthernetFrame::setMacSource(Mac mac) {
-  macSource = mac;
+EthernetFrame::~EthernetFrame() {
 }
 
-Mac EthernetFrame::getMacDest() {
-  return macDest;
+Mac EthernetFrame::getSourceMac() {
+  return sourceMac;
 }
 
-void EthernetFrame::setMacDest(Mac mac) {
-  macDest = mac;
+void EthernetFrame::setSourceMac(Mac mac) {
+  sourceMac = mac;
+}
+
+Mac EthernetFrame::getDestMac() {
+  return destMac;
+}
+
+void EthernetFrame::setDestMac(Mac mac) {
+  destMac = mac;
 }
 
 FrameType EthernetFrame::getFrameType() {

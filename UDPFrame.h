@@ -5,8 +5,16 @@
 
 class UDPFrame : public TransportFrame {
  public:
+  UDPFrame();
+  virtual ~UDPFrame();
+  int getSourcePort();
+  void setSourcePort(int);
+  int getDestPort();
+  void setDestPort(int);
 
  private:
+  int sourcePort;
+  int destPort;
 
 };
 

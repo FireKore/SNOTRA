@@ -6,6 +6,8 @@
 
 class Frame {
  public:
+  Frame();
+  virtual ~Frame();
 
  private:
 

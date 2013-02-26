@@ -7,18 +7,20 @@
 
 class EthernetFrame : public Frame {
  public:
-  Mac getMacSource();
-  void setMacSource(Mac);
-  Mac getMacDest();
-  void setMacDest(Mac);
+  EthernetFrame();
+  virtual ~EthernetFrame();
+  Mac getSourceMac();
+  void setSourceMac(Mac);
+  Mac getDestMac();
+  void setDestMac(Mac);
   FrameType getFrameType();
   void setFrameType(FrameType);
   NetworkFrame getData();
   void setData(NetworkFrame);
 
  private:
-  Mac macSource;
-  Mac macDest;
+  Mac sourceMac;
+  Mac destMac;
   FrameType frameType;
   NetworkFrame data;
 

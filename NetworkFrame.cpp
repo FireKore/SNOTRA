@@ -1,19 +1,25 @@
 #include "NetworkFrame.h"
 
-Ip* NetworkFrame::getIpSource() {
-  return ipSource;
+NetworkFrame::NetworkFrame() {
 }
 
-void NetworkFrame::setIpSource(Ip* ip) {
-  ipSource = ip;
+NetworkFrame::~NetworkFrame() {
 }
 
-Ip* NetworkFrame::getIpDest() {
-  return ipDest;
+Ip* NetworkFrame::getSourceIp() {
+  return sourceIp;
 }
 
-void NetworkFrame::setIpDest(Ip* ip) {
-  ipDest = ip;
+void NetworkFrame::setSourceIp(Ip* ip) {
+  sourceIp = ip;
+}
+
+Ip* NetworkFrame::getDestIp() {
+  return destIp;
+}
+
+void NetworkFrame::setDestIp(Ip* ip) {
+  destIp = ip;
 }
 
 int NetworkFrame::getTTL() {
