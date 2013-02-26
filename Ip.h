@@ -3,8 +3,10 @@
 
 class Ip {
  public:
-  virtual unsigned char* getAllAddress();
-  virtual unsigned char getAddress(int);
+  Ip();
+  virtual ~Ip();
+  virtual unsigned char* getAllAddress() = 0;
+  virtual unsigned char getAddress(int) = 0;
 };
 
 #endif

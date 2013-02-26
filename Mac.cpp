@@ -13,12 +13,22 @@ Mac::Mac(std::string str) {
   }
 }
 
+Mac::Mac() {
+  for (int i = 0; i < 6; i++) {
+    address[i] = 0;
+  }
+}
+
 unsigned char* Mac::getAllAddress() {
   return address;
 }
 
 unsigned char Mac::getAddress(int i) {
   return address[i];
+}
+
+void Mac::setAddress(int i, unsigned char c) {
+  address[i] = c;
 }
 
 std::ostream& operator<<(std::ostream& flux, Mac& mac) {
@@ -41,4 +51,12 @@ bool operator==(Mac mac1, Mac mac2) {
     }
   }
   return true;
+}
+
+Mac Mac::operator=(Mac other) {
+  Mac mac;
+  for (int i = 0; i < 4; i++) {
+    mac.setAddress(i, other.getAddress(i));
+  }
+  return mac;
 }

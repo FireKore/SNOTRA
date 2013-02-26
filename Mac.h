@@ -9,13 +9,17 @@
 class Mac {
  public:
   Mac(std::string);
+  Mac();
   unsigned char* getAllAddress();
   unsigned char getAddress(int);
-  friend std::ostream& operator<<(std::ostream&, Mac&);
+  friend std::ostream& operator<<(const std::ostream&, const Mac&);
   friend bool operator==(Mac, Mac);
+  Mac operator=(Mac);
 
  private:
   unsigned char address[6];
+
+  void setAddress(int, unsigned char);
 
 };
 

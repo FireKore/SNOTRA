@@ -13,12 +13,22 @@ Ipv4::Ipv4(std::string str) {
   }
 }
 
+Ipv4::Ipv4() {
+  for (int i = 0; i < 4; i++) {
+    address[i] = 0;
+  }
+}
+
 unsigned char* Ipv4::getAllAddress() {
   return address;
 }
 
 unsigned char Ipv4::getAddress(int i) {
   return address[i];
+}
+
+void Ipv4::setAddress(int i, unsigned char c) {
+  address[i] = c;
 }
 
 std::ostream& operator<<(std::ostream& flux, Ipv4& ip) {
@@ -45,4 +55,20 @@ bool Ipv4::isSameNetwork(Ipv4 ip, Mask mask) {
     }
   }
   return true;
+}
+
+Ipv4 operator+(Ipv4 ip, Mask mask) {
+  Ipv4 temp;
+  for(int i = 0; i < 4; i++) {
+    temp.setAddress(i, (ip.getAddress(i) & mask.getMask(i)));
+  }
+  return temp;
+}
+
+Ipv4 Ipv4::operator=(Ipv4 other) {
+  Ipv4 ip;
+  for (int i = 0; i < 4; i++) {
+    ip.setAddress(i, other.getAddress(i));
+  }
+  return ip;
 }
