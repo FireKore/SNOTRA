@@ -8,6 +8,13 @@ class TransportFrame : public Frame {
   TransportFrame();
   virtual ~TransportFrame();
 
+  FrameType getFrameType();
+  Protocole getProtocole();
+  Ip* getSourceIp();
+  Ip* getDestIp();
+  Mac getSourceMac();
+  Mac getDestMac();
+
  private:
 
 };

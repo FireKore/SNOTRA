@@ -4,7 +4,7 @@ PROGS=snotra
 
 all: $(PROGS)
 
-snotra: Ipv4.o Ip.o Mask.o Mac.o Frame.o EthernetFrame.o NetworkFrame.o ARPFrame.o TransportFrame.o UDPFrame.o TCPFrame.o ICMPFrame.o main.o
+snotra: Ipv4.o Ip.o Mask.o Mac.o Frame.o EthernetFrame.o NetworkFrame.o ARPFrame.o TransportFrame.o UDPFrame.o TCPFrame.o ICMPFrame.o Device.o main.o
 	g++ $^ -o $@
 
 clean:
@@ -27,3 +27,4 @@ TransportFrame.o : TransportFrame.h Frame.h enum.h
 UDPFrame.o: UDPFrame.h TransportFrame.h enum.h
 TCPFrame.o: UDPFrame.h TCPFrame.h enum.h
 ICMPFrame.o: ICMPFrame.h TransportFrame.h enum.h
+Device.o: Device.h Frame.h enum.h

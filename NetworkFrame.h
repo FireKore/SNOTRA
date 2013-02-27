@@ -9,6 +9,11 @@ class NetworkFrame : public Frame {
  public:
   NetworkFrame();
   virtual ~NetworkFrame();
+
+  FrameType getFrameType();
+  virtual Mac getSourceMac();
+  virtual Mac getDestMac();
+
   Ip* getSourceIp();
   void setSourceIp(Ip*);
   Ip* getDestIp();

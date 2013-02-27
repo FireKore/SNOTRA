@@ -6,6 +6,20 @@ EthernetFrame::EthernetFrame() {
 EthernetFrame::~EthernetFrame() {
 }
 
+
+Protocole EthernetFrame::getProtocole() {
+  return data.getProtocole();
+}
+
+Ip* EthernetFrame::getSourceIp() {
+  return data.getSourceIp();
+}
+
+Ip* EthernetFrame::getDestIp() {
+  return data.getDestIp();
+}
+
+
 Mac EthernetFrame::getSourceMac() {
   return sourceMac;
 }

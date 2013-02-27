@@ -6,6 +6,22 @@ NetworkFrame::NetworkFrame() {
 NetworkFrame::~NetworkFrame() {
 }
 
+
+FrameType NetworkFrame::getFrameType() {
+  return NOTHING;
+}
+
+Mac NetworkFrame::getSourceMac() {
+  Mac mac;
+  return mac;
+}
+
+Mac NetworkFrame::getDestMac() {
+  Mac mac;
+  return mac;
+}
+
+
 Ip* NetworkFrame::getSourceIp() {
   return sourceIp;
 }

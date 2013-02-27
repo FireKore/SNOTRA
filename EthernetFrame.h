@@ -9,6 +9,11 @@ class EthernetFrame : public Frame {
  public:
   EthernetFrame();
   virtual ~EthernetFrame();
+
+  Protocole getProtocole();
+  Ip* getSourceIp();
+  Ip* getDestIp();
+
   Mac getSourceMac();
   void setSourceMac(Mac);
   Mac getDestMac();
