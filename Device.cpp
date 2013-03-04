@@ -75,4 +75,30 @@ std::list<Frame*> Device::getFrameHistoryByDestMac(Mac mac) {
   return result;
 }
 
+std::list<NetworkInterface> Device::getAllNetworkInterface() {
+  return networkInterfaces;
+}
 
+void Device::addNetworkInterface(NetworkInterface interface) {
+  networkInterfaces.push_back(interface);
+}
+
+NetworkInterface Device::getNetworkInterfaceByMac(Mac mac) {
+  for(std::list<NetworkInterface>::iterator it = networkInterfaces.begin(); it != networkInterfaces.end(); it++) {
+    if(it->getMac() == mac) {
+      return *it;
+    }
+  }
+  NetworkInterface net;
+  return net;
+}
+
+
+void Device::receiveFrame(Frame* frame) {
+  addFrameToHistory(frame);
+  //TODO
+}
+
+void Device::sendFrame(Frame* frame) {
+  getNetworkInterfaceByMac(frame->getSourceMac()).sendFrame(frame);
+}

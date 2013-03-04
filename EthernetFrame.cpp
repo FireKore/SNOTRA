@@ -3,6 +3,13 @@
 EthernetFrame::EthernetFrame() {
 }
 
+EthernetFrame::EthernetFrame(Mac source, Mac dest, FrameType type, Frame* data_) {
+  sourceMac = source;
+  destMac = dest;
+  frameType = type;
+  data = *(static_cast<NetworkFrame*>(data_));
+}
+
 EthernetFrame::~EthernetFrame() {
 }
 

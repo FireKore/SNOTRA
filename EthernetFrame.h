@@ -8,6 +8,7 @@
 class EthernetFrame : public Frame {
  public:
   EthernetFrame();
+  EthernetFrame(Mac, Mac, FrameType, Frame*);
   virtual ~EthernetFrame();
 
   Protocole getProtocole();
