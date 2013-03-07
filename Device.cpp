@@ -99,6 +99,12 @@ void Device::receiveFrame(Frame* frame) {
   //TODO
 }
 
+Frame* Device::createFrame(Ip*) {
+  Frame* frame;
+  //TODO
+  return frame;
+}
+
 void Device::sendFrame(Frame* frame) {
   getNetworkInterfaceByMac(frame->getSourceMac()).sendFrame(frame);
 }

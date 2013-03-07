@@ -26,6 +26,7 @@ class Device {
   NetworkInterface getNetworkInterfaceByMac(Mac);
 
   void receiveFrame(Frame*);
+  Frame* createFrame(Ip*);
   void sendFrame(Frame*);
 
  private:

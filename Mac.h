@@ -17,7 +17,7 @@ class Mac {
   Mac operator=(Mac);
 
  private:
-  unsigned char address[6];
+  std::list<unsigned char> address;
 
   void setAddress(int, unsigned char);
 

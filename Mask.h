@@ -1,17 +1,18 @@
 #ifndef __MASK_H__
 #define __MASK_H__
 
-#include<iostream>
+#include <string>
 
 class Mask {
  public:
+  Mask();
   Mask(int);
-  unsigned char* getAllMask();
-  unsigned char getMask(int);
-  friend std::ostream& operator<<(std::ostream&, Mask&);
+  virtual ~Mask();
+  std::string toString();
+  unsigned char getCharInPosition(int);
 
  private:
-  unsigned char mask[4];
+  int value;
 };
 
 #endif

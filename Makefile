@@ -4,7 +4,7 @@ PROGS=snotra
 
 all: $(PROGS)
 
-snotra: Ipv4.o Ip.o Mask.o Mac.o Frame.o EthernetFrame.o NetworkFrame.o ARPFrame.o TransportFrame.o UDPFrame.o TCPFrame.o ICMPFrame.o NetworkInterface.o MacTable.o Device.o Wire.o main.o
+snotra: Ipv4.o Ip.o Mask.o Mac.o Frame.o NetworkInterface.o MacTable.o ARPTable.o RoutingTable.o Device.o Wire.o main.o
 	g++ $^ -o $@
 
 clean:
@@ -14,20 +14,15 @@ depend:
 	@makedepend *.cpp -Y. > /dev/null 2>&1
 # DO NOT DELETE
 
-Main.o: Ipv4.h Mac.h
-Ip.o: Ip.h
-Ipv4.o: Ipv4.h Ip.h Mask.h
+Main.o: 
+Ip.o: Ip.h Mask.h
+Ipv4.o: Ipv4.h Ip.h
 Mask.o: Mask.h
 Mac.o: Mac.h
-Frame.o: Frame.h
-EthernetFrame.o: EthernetFrame.h Frame.h enum.h
-NetworkFrame.o: NetworkFrame.h Frame.h enum.h
-ARPFrame.o: ARPFrame.h NetworkFrame.h enum.h
-TransportFrame.o : TransportFrame.h Frame.h enum.h
-UDPFrame.o: UDPFrame.h TransportFrame.h enum.h
-TCPFrame.o: UDPFrame.h TCPFrame.h enum.h
-ICMPFrame.o: ICMPFrame.h TransportFrame.h enum.h
+Frame.o: Frame.h Header.h
 NetworkInterface.o: NetworkInterface.h MacTable.h EthernetFrame.h Frame.h
-MacTable.o: MacTable.h Wire.h
+MacTable.o: MacTable.h Mac.h Wire.h
+ARPTable.o: ARPTable.h Mac.h Ip.h NetworkInterface.h
+RoutingTable.o: RoutingTable.h Ip.h Mask.h
 Device.o: Device.h Frame.h enum.h
 Wire.o: Wire.h Frame.h

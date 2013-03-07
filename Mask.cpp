@@ -1,6 +1,10 @@
 #include "Mask.h"
 
-Mask::Mask(int mask_) {
+Mask::Mask() {
+}
+
+Mask::Mask(int value_) {
+  value = value;
   for(int i = 0; i < 3; i++) {
     for(int j = 0; ((j < 8) && (j < mask[i] - 8*i)); j++) {
       mask[i] = mask[i] | (1u << (7-j));
@@ -8,23 +12,18 @@ Mask::Mask(int mask_) {
   }
 }
 
-unsigned char* Mask::getAllMask() {
-  return mask;
+Mask::~Mask() {
 }
 
-unsigned char Mask::getMask(int i) {
-  return mask[i];
+std::string Mask::toString() {
+  std::string result = value;
+  return result;
 }
 
-std::ostream& operator<<(std::ostream& flux, Mask& mask) {
-  int c = 0;
-  for(int i = 0; i < 3; i++) {
-    int temp = (int)mask.getMask(i);
-    while(temp != 0) {
-      c += (temp & 1L);
-      temp >>= 1;
-    }
+unsigned char Mask::getCharInPosition(int i) {
+  unsigned char result;
+  for(int j = 0; ((j < 8) && (j < result - 8*i)); j++) {
+    result = result | (1u << (7-j));
   }
-  flux << '/' << c;
-  return flux;
+  return result;
 }

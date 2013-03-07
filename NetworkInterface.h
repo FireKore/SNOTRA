@@ -25,8 +25,7 @@ class NetworkInterface {
  private:
   Mac mac;
   Ip* ip;
-  MacTable macTable;
-  Device* device;
+  MacTable macTable; // déplacer dans le Switch. Voir cahier.
 
 };
 
