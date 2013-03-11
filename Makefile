@@ -1,4 +1,4 @@
-CPPFLAGS=-g -Wall
+CPPFLAGS=-g -W -Wall -Wextra -pedantic -std=c++0x
 
 PROGS=snotra
 

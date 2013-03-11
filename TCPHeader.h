@@ -2,6 +2,7 @@
 #define __TCPHEADER_H__
 
 #include <string>
+#include <cstring>
 #include "UDPHeader.h"
 
 class TCPHeader : public UDPHeader {
@@ -15,12 +16,15 @@ class TCPHeader : public UDPHeader {
   void setLastFrameNumber(int);
   unsigned char getFlags();
   void setFlags(unsigned char);
-  void addFlag(std::string);
+  void changeFlag(std::string, bool);
 
  private:
   int frameNumber;
   int lastFrameNumber;
   unsigned char flags;
+
+  void addFlag(int);
+  void removeFlag(int);
 
 };
 

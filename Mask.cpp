@@ -4,12 +4,7 @@ Mask::Mask() {
 }
 
 Mask::Mask(int value_) {
-  value = value;
-  /*for(int i = 0; i < 3; i++) {
-    for(int j = 0; ((j < 8) && (j < mask[i] - 8*i)); j++) {
-      mask[i] = mask[i] | (1u << (7-j));
-    }
-    }*/
+  value = value_;
 }
 
 Mask::~Mask() {
