@@ -4,6 +4,7 @@
 #include <list>
 #include <string>
 #include <sstream>
+#include <algorithm>
 #include "Mask.h"
 
 class Ip {
@@ -16,7 +17,6 @@ class Ip {
   void setMask(Mask);
   virtual std::string toString();
   virtual std::string toStringFull();
-  virtual bool isSameNetwork(Ip);
   virtual std::list<unsigned char> getNetwork();
   friend bool operator==(Ip, Ip);
 

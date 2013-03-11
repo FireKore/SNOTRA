@@ -5,21 +5,22 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include <list>
 
 class Mac {
  public:
-  Mac(std::string);
   Mac();
-  unsigned char* getAllAddress();
-  unsigned char getAddress(int);
-  friend std::ostream& operator<<(const std::ostream&, const Mac&);
+  Mac(std::string);
+  virtual ~Mac();
+  std::list<unsigned char> getAddress();
+  std::string toString();
   friend bool operator==(Mac, Mac);
-  Mac operator=(Mac);
 
  private:
   std::list<unsigned char> address;
 
-  void setAddress(int, unsigned char);
+  std::string getSubstring(std::string, int);
+  char toHex(int);
 
 };
 

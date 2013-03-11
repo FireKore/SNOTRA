@@ -3,10 +3,9 @@
 ARPTableLine::ARPTableLine() {
 }
 
-ARPTableLine::ARPTableLine(Ip* ip_, Mac mac_, NetworkInterface iface_) {
+ARPTableLine::ARPTableLine(Ip* ip_, Mac mac_) {
   ip = ip_;
   mac = mac_;
-  iface = iface_;
 }
 
 ARPTableLine::~ARPTableLine() {
@@ -28,13 +27,6 @@ void ARPTableLine::setMac(Mac mac_) {
   mac = mac_;
 }
 
-NetworkInterface ARPTableLine::getNetworkInterface() {
-  return iface;
-}
-
-void ARPTableLine::setNetworkInterface(NetworkInterface iface_) {
-  iface = iface_;
-}
 
 
 

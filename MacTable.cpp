@@ -25,11 +25,6 @@ void MacTable::addLine(MacTableLine line) {
 }
 
 
-void MacTable::sendFrame(Frame* frame) {
-  getLineByMac(frame->getDestMac()).getWire().sendFrame(frame);
-}
-
-
 
 
 MacTableLine::MacTableLine() {

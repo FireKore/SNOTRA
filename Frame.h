@@ -6,20 +6,17 @@
 class Frame {
  public:
   Frame();
-  Frame(Frame);
-  Frame(Frame*, Header*);
+  Frame(const Frame&);
+  Frame(Frame*, Header);
   virtual ~Frame();
-  FrameType getDataLevel();
-  void setDataLevel(FrameType);
-  Header* getHeader();
-  void setHeadet(Header*);
+  Header getHeader();
+  void setHeader(Header);
   Frame* getData();
   void setData(Frame*);
 
  private:
-  FrameType dataLevel;
-  Header* header;
   Frame* data;
+  Header header;
 
 };
 

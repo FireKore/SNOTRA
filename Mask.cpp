@@ -5,19 +5,20 @@ Mask::Mask() {
 
 Mask::Mask(int value_) {
   value = value;
-  for(int i = 0; i < 3; i++) {
+  /*for(int i = 0; i < 3; i++) {
     for(int j = 0; ((j < 8) && (j < mask[i] - 8*i)); j++) {
       mask[i] = mask[i] | (1u << (7-j));
     }
-  }
+    }*/
 }
 
 Mask::~Mask() {
 }
 
 std::string Mask::toString() {
-  std::string result = value;
-  return result;
+  std::ostringstream oss;
+  oss << value;
+  return oss.str();
 }
 
 unsigned char Mask::getCharInPosition(int i) {

@@ -2,6 +2,7 @@
 #define __MASK_H__
 
 #include <string>
+#include <sstream>
 
 class Mask {
  public:

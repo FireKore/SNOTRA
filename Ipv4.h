@@ -11,7 +11,7 @@ class Ipv4 : public Ip{
   virtual std::string getSubstring(std::string, int);
   virtual std::string toString();
   virtual std::string toStringFull();
-  virtual bool isSameNetwork(Ip);
+  virtual bool isSameNetwork(Ipv4);
   virtual std::list<unsigned char> getNetwork();
 
  private:

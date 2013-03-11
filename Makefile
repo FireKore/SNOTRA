@@ -4,7 +4,7 @@ PROGS=snotra
 
 all: $(PROGS)
 
-snotra: Ipv4.o Ip.o Mask.o Mac.o Frame.o NetworkInterface.o MacTable.o ARPTable.o RoutingTable.o Device.o Wire.o main.o
+snotra: Ipv4.o Ip.o Mask.o Mac.o Frame.o Header.o DataLinkHeader.o NetworkHeader.o TransportHeader.o main.o #NetworkInterface.o MacTable.o ARPTable.o RoutingTable.o Device.o Wire.o main.o
 	g++ $^ -o $@
 
 clean:
@@ -20,9 +20,13 @@ Ipv4.o: Ipv4.h Ip.h
 Mask.o: Mask.h
 Mac.o: Mac.h
 Frame.o: Frame.h Header.h
-NetworkInterface.o: NetworkInterface.h MacTable.h EthernetFrame.h Frame.h
-MacTable.o: MacTable.h Mac.h Wire.h
-ARPTable.o: ARPTable.h Mac.h Ip.h NetworkInterface.h
-RoutingTable.o: RoutingTable.h Ip.h Mask.h
-Device.o: Device.h Frame.h enum.h
-Wire.o: Wire.h Frame.h
+Header.o: Header.h enum.h
+DataLinkHeader.o: DataLinkHeader.h Header.h Mac.h enum.h
+NetworkHeader.o: NetworkHeader.h Header.h Ip.h enum.h
+TransportHeader.o: TransportHeader.h Header.h enum.h
+#NetworkInterface.o: NetworkInterface.h MacTable.h EthernetFrame.h Frame.h
+#MacTable.o: MacTable.h Mac.h Wire.h
+#ARPTable.o: ARPTable.h Mac.h Ip.h NetworkInterface.h
+#RoutingTable.o: RoutingTable.h Ip.h Mask.h
+#Device.o: Device.h Frame.h enum.h
+#Wire.o: Wire.h Frame.h

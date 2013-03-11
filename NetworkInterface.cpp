@@ -35,12 +35,3 @@ void NetworkInterface::setMacTable(MacTable table) {
   macTable = table;
 }
 
-
-Frame* NetworkInterface::createEthernetFrame(Frame* data, Mac dest, FrameType type) {
-  Frame* frame = new EthernetFrame(mac, dest, type, data);
-  return frame;
-}
-
-void NetworkInterface::sendFrame(Frame* frame) {
-  macTable.sendFrame(frame);
-}

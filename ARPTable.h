@@ -9,7 +9,7 @@
 class ARPTableLine {
  public:
   ARPTableLine();
-  ARPTableLine(Ip*, Mac, NetworkInterface);
+  ARPTableLine(Ip*, Mac);
   virtual ~ARPTableLine();
   Ip* getIp();
   void setIp(Ip*);

@@ -4,7 +4,6 @@
 #include "Mac.h"
 #include "Ip.h"
 #include "MacTable.h"
-#include "EthernetFrame.h"
 #include "Frame.h"
 
 class NetworkInterface {
@@ -18,9 +17,6 @@ class NetworkInterface {
   void setIp(Ip*);
   MacTable getMacTable();
   void setMacTable(MacTable);
-
-  Frame* createEthernetFrame(Frame*, Mac, FrameType);
-  void sendFrame(Frame*);
 
  private:
   Mac mac;

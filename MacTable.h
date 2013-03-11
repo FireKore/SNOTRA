@@ -29,7 +29,6 @@ class MacTable {
   MacTableLine getLineByMac(Mac);
   void addLine(MacTableLine);
 
-  void sendFrame(Frame*);
 
  private:
   std::list<MacTableLine> macTable;
