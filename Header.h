@@ -6,13 +6,16 @@
 class Header {
  public:
   Header();
-  Header(HeaderType);
+  Header(HeaderType, bool);
   virtual ~Header();
   HeaderType getType();
   void setType(HeaderType);
+  bool getIsAnswer();
+  void setIsAnswer(bool);
 
  private:
   HeaderType type;
+  bool isAnswer;
 
 };
 

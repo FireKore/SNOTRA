@@ -1,4 +1,4 @@
-#ifndef __DATALINKHEADER_H__
+ifndef __DATALINKHEADER_H__
 #define __DATALINKHEADER_H__
 
 #include "Mac.h"
@@ -8,7 +8,7 @@
 class DataLinkHeader : public Header {
  public:
   DataLinkHeader();
-  DataLinkHeader(Mac, Mac, Type);
+  DataLinkHeader(Mac, Mac, Type, bool);
   virtual ~DataLinkHeader();
   Mac getSource();
   void setSource(Mac);

@@ -3,7 +3,7 @@
 TCPHeader::TCPHeader() {
 }
 
-TCPHeader::TCPHeader(int sourcePort, int destinationPort, int frameNumber_, int lastFrameNumber_, unsigned char flags_) : UDPHeader(sourcePort, destinationPort) {
+TCPHeader::TCPHeader(int sourcePort, int destinationPort, int frameNumber_, int lastFrameNumber_, unsigned char flags_, bool isAnswer) : UDPHeader(sourcePort, destinationPort, isAnswer) {
   frameNumber = frameNumber_;
   lastFrameNumber = lastFrameNumber_;
   flags = flags_;

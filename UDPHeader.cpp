@@ -3,7 +3,7 @@
 UDPHeader::UDPHeader() {
 }
 
-UDPHeader::UDPHeader(int source, int destination) {
+UDPHeader::UDPHeader(int source, int destination, bool isAnswer) : TransportHeader(isAnswer) {
   sourcePort = source;
   destinationPort = destination;
 }

@@ -6,7 +6,7 @@
 class UDPHeader : public TransportHeader {
  public:
   UDPHeader();
-  UDPHeader(int, int);
+  UDPHeader(int, int, bool);
   virtual ~UDPHeader();
   int getSourcePort();
   void setSourcePort(int);

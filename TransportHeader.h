@@ -7,6 +7,7 @@
 class TransportHeader : public Header {
  public:
   TransportHeader();
+  TransportHeader(bool);
   virtual ~TransportHeader();
 
  private:

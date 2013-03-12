@@ -7,7 +7,7 @@
 class ARPHeader : public NetworkHeader {
  public:
   ARPHeader();
-  ARPHeader(Ip, Ip, int, Protocole, Mac, Mac);
+  ARPHeader(Ip, Ip, int, Protocole, Mac, Mac, bool);
   virtual ~ARPHeader();
   Mac getSourceMac();
   void setSourceMac(Mac);

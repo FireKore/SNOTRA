@@ -15,13 +15,10 @@ class ICMPHeader : public TransportHeader {
   void setTimeNow();
   Ip getSourceIp();
   void setSourceIp(Ip);
-  bool getIsAnswer();
-  void setIsAnswer(bool);
 
  private:
   time_t creationTime;
   Ip sourceIp;
-  bool isAnswer;
 
 };
 

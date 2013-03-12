@@ -1,9 +1,9 @@
 #include "NetworkHeader.h"
 
-NetworkHeader::NetworkHeader() : Header(NETWORK) {
+NetworkHeader::NetworkHeader() : Header(NETWORK, true) {
 }
 
-NetworkHeader::NetworkHeader(Ip source_, Ip destination_, int ttl, Protocole protocole_) : Header(NETWORK) {
+NetworkHeader::NetworkHeader(Ip source_, Ip destination_, int ttl, Protocole protocole_, bool isAnswer) : Header(NETWORK, isAnswer) {
   source = source_;
   destination = destination_;
   timeToLive = ttl;

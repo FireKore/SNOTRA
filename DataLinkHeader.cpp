@@ -1,9 +1,9 @@
 #include "DataLinkHeader.h"
 
-DataLinkHeader::DataLinkHeader() : Header(DATALINK) {
+DataLinkHeader::DataLinkHeader() : Header(DATALINK, true) {
 }
 
-DataLinkHeader::DataLinkHeader(Mac source_, Mac destination_, Type type_) : Header(DATALINK) {
+DataLinkHeader::DataLinkHeader(Mac source_, Mac destination_, Type type_, bool isAnswer) : Header(DATALINK, isAnswer) {
   source = source_;
   destination = destination_;
   type = type_;

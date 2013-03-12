@@ -8,7 +8,7 @@
 class NetworkHeader : public Header {
  public:
   NetworkHeader();
-  NetworkHeader(Ip, Ip, int, Protocole);
+  NetworkHeader(Ip, Ip, int, Protocole, bool);
   virtual ~NetworkHeader();
   Ip getSource();
   void setSource(Ip);

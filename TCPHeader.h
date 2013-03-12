@@ -8,7 +8,7 @@
 class TCPHeader : public UDPHeader {
  public:
   TCPHeader();
-  TCPHeader(int, int, int, int, unsigned char);
+  TCPHeader(int, int, int, int, unsigned char, bool);
   virtual ~TCPHeader();
   int getFrameNumber();
   void setFrameNumber(int);
