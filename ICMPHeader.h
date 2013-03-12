@@ -8,17 +8,20 @@
 class ICMPHeader : public TransportHeader {
  public:
   ICMPHeader();
-  ICMPHeader(Ip);
+  ICMPHeader(Ip, bool);
   virtual ~ICMPHeader();
   time_t getTime();
   void setTime(time_t);
   void setTimeNow();
   Ip getSourceIp();
   void setSourceIp(Ip);
+  bool getIsAnswer();
+  void setIsAnswer(bool);
 
  private:
   time_t creationTime;
   Ip sourceIp;
+  bool isAnswer;
 
 };
 

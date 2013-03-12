@@ -2,8 +2,8 @@
 #define __DEVICE_H__
 
 #include <list>
+#include <memory>
 #include "Frame.h"
-#include "NetworkInterface.h"
 
 class Wire;
 
@@ -11,18 +11,13 @@ class Device {
  public:
   Device();
   virtual ~Device();
-  std::list<Frame*> getAllFrameHistory();
-  void addFrameToHistory(Frame*);
-  std::list<Frame*> getFrameHistoryByDestIp(Ip*);
-  std::list<Frame*> getFrameHistoryBySourceIp(Ip*);
-  std::list<Frame*> getFrameHistoryByDestMac(Mac);
-  std::list<Frame*> getFrameHistoryBySourceMac(Mac);
-
-  void receiveFrame(Frame*);
-  Frame* createFrame(Ip*);
+  std::list<std::shared_ptr<Frame>> getAllFrameHistory();
+  virtual void receiveFrame(std::shared_ptr<Frame>);
 
  private:
-  std::list<Frame*> frameHistory;
+  std::list<std::shared_ptr<Frame>> frameHistory;
+
+  void addFrameToHistory(std::shared_ptr<Frame>);
 
 };
 

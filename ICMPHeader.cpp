@@ -3,8 +3,9 @@
 ICMPHeader::ICMPHeader() {
 }
 
-ICMPHeader::ICMPHeader(Ip ip){
+ICMPHeader::ICMPHeader(Ip ip, bool isAnswer_){
   sourceIp = ip;
+  isAnswer = isAnswer_;
   creationTime = time(&creationTime);
 }
 
@@ -29,4 +30,12 @@ Ip ICMPHeader::getSourceIp() {
 
 void ICMPHeader::setSourceIp(Ip ip) {
   sourceIp = ip;
+}
+
+bool ICMPHeader::getIsAnswer() {
+  return isAnswer;
+}
+
+void ICMPHeader::setIsAnswer(bool isAnswer_) {
+  isAnswer = isAnswer_;
 }
