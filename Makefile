@@ -4,7 +4,7 @@ PROGS=snotra
 
 all: $(PROGS)
 
-snotra: Ipv4.o Ip.o Mask.o Mac.o Frame.o Header.o DataLinkHeader.o NetworkHeader.o ARPHeader.o TransportHeader.o UDPHeader.o TCPHeader.o ICMPHeader.o Device.o main.o #NetworkInterface.o MacTable.o ARPTable.o RoutingTable.o Wire.o main.o
+snotra: Ipv4.o Ip.o Mask.o Mac.o Frame.o Header.o DataLinkHeader.o NetworkHeader.o ARPHeader.o TransportHeader.o UDPHeader.o TCPHeader.o ICMPHeader.o Device.o Hub.o main.o #NetworkInterface.o MacTable.o ARPTable.o RoutingTable.o Wire.o main.o
 	g++ $^ -o $@
 
 clean:
@@ -33,4 +33,5 @@ ICMPHeader.o: ICMPHeader.h TransportHeader.h Ip.h
 #ARPTable.o: ARPTable.h Mac.h Ip.h NetworkInterface.h
 #RoutingTable.o: RoutingTable.h Ip.h Mask.h
 Device.o: Device.h Frame.h
+Hub.o: Hub.h Device.h Frame.h
 #Wire.o: Wire.h Frame.h

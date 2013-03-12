@@ -17,4 +17,3 @@ void Device::addFrameToHistory(std::shared_ptr<Frame> frame) {
 void Device::receiveFrame(std::shared_ptr<Frame> frame) {
   addFrameToHistory(frame);
 }
-
