@@ -1,4 +1,4 @@
-ifndef __DATALINKHEADER_H__
+#ifndef __DATALINKHEADER_H__
 #define __DATALINKHEADER_H__
 
 #include "Mac.h"

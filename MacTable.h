@@ -2,22 +2,23 @@
 #define __MACTABLE_H__
 
 #include <list>
+#include <memory>
 #include "Mac.h"
-#include "Wire.h"
+#include "Device.h"
 
 class MacTableLine {
  public:
   MacTableLine();
-  MacTableLine(Mac, Wire);
+  MacTableLine(Mac, std::shared_ptr<Device>);
   virtual ~MacTableLine();
   Mac getMac();
   void setMac(Mac);
-  Wire getWire();
-  void setWire(Wire);
+  std::shared_ptr<Device> getNeighbourg();
+  void setNeighbourg(std::shared_ptr<Device>);
 
  private:
   Mac mac;
-  Wire wire;
+  std::shared_ptr<Device> neighbourg;
 
 };
 

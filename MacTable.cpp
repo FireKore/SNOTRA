@@ -1,5 +1,7 @@
 #include "MacTable.h"
 
+//MacTable
+
 MacTable::MacTable() {
 }
 
@@ -26,13 +28,14 @@ void MacTable::addLine(MacTableLine line) {
 
 
 
+//MacTableLine
 
 MacTableLine::MacTableLine() {
 }
 
-MacTableLine::MacTableLine(Mac mac_, Wire wire_) {
+MacTableLine::MacTableLine(Mac mac_, std::shared_ptr<Device> device) {
   mac = mac_;
-  wire = wire_;
+  neighbourg = device;
 }
 
 MacTableLine::~MacTableLine() {
@@ -46,10 +49,10 @@ void MacTableLine::setMac(Mac mac_) {
   mac = mac_;
 }
 
-Wire MacTableLine::getWire() {
-  return wire;
+std::shared_ptr<Device> MacTableLine::getNeighbourg() {
+  return neighbourg;
 }
 
-void MacTableLine::setWire(Wire wire_) {
-  wire = wire_;
+void MacTableLine::setNeighbourg(std::shared_ptr<Device> device) {
+  neighbourg = device;
 }
