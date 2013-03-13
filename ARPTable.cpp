@@ -28,9 +28,7 @@ void ARPTableLine::setMac(Mac mac_) {
 }
 
 
-
-
-
+//ARPTable
 
 ARPTable::ARPTable() {
 }

@@ -21,7 +21,7 @@ class ARPTableLine {
  private:
   Ip* ip;
   Mac mac;
-  //dégager interface et ajouter la durée de vie
+  //TODO : ajouter la gestion de la durée de vie.
 
 };
 
