@@ -3,7 +3,7 @@
 Frame::Frame() {
 }
 
-Frame::Frame(std::shared_ptr<Frame> frame, Header header_) {
+Frame::Frame(std::shared_ptr<Frame> frame, std::shared_ptr<Header> header_) {
   data = frame;
   header = header_;
 }
@@ -11,11 +11,11 @@ Frame::Frame(std::shared_ptr<Frame> frame, Header header_) {
 Frame::~Frame() {
 }
 
-Header Frame::getHeader() {
+std::shared_ptr<Header> Frame::getHeader() {
   return header;
 }
 
-void Frame::setHeader(Header header_) {
+void Frame::setHeader(std::shared_ptr<Header> header_) {
   header = header_;
 }
 

@@ -23,7 +23,8 @@ void Switch::receiveFrame(std::shared_ptr<Frame> frame) {
 }
 
 void Switch::sendFrame(std::shared_ptr<Frame> frame) {
-  if(frame->getHeader().getType() == DATALINK) {
-    macTable.getLineByMac((DataLinkHeader)(frame->getHeader()).getDestinationMac()).getNeighbourg()->receive(frame);
+  if(frame->getHeader()->getType() == DATALINK) {
+    std::shared_ptr<DataLinkHeader> header = std::dynamic_pointer_cast<DataLinkHeader>(frame->getHeader());
+    macTable.getLineByMac(header->getDestination()).getNeighbourg()->receiveFrame(frame);
   }
 }

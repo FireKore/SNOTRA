@@ -7,16 +7,16 @@
 class Frame {
  public:
   Frame();
-  Frame(std::shared_ptr<Frame>, Header);
+  Frame(std::shared_ptr<Frame>, std::shared_ptr<Header>);
   virtual ~Frame();
-  Header getHeader();
-  void setHeader(Header);
+  std::shared_ptr<Header> getHeader();
+  void setHeader(std::shared_ptr<Header>);
   std::shared_ptr<Frame> getData();
   void setData(std::shared_ptr<Frame>);
 
  private:
   std::shared_ptr<Frame> data;
-  Header header;
+  std::shared_ptr<Header> header;
 
 };
 
