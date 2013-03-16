@@ -19,7 +19,7 @@ Ip.o: Ip.h Mask.h
 Ipv4.o: Ipv4.h Ip.h
 Mask.o: Mask.h
 Mac.o: Mac.h
-Frame.o: Frame.h Header.h
+Frame.o: Frame.h Header.h Device.h
 Header.o: Header.h enum.h
 DataLinkHeader.o: DataLinkHeader.h Header.h Mac.h enum.h
 NetworkHeader.o: NetworkHeader.h Header.h Ip.h enum.h
@@ -34,5 +34,5 @@ ICMPHeader.o: ICMPHeader.h TransportHeader.h Ip.h
 Device.o: Device.h Frame.h
 Hub.o: Hub.h Device.h Frame.h
 Switch.o: Switch.h Frame.h MacTable.h Mac.h Device.h DataLinkHeader.h enum.h
-MacTable.o: MacTable.h Mac.h Device.h
+MacTable.o: MacTable.h Mac.h Device.h Frame.h
 #Wire.o: Wire.h Frame.h

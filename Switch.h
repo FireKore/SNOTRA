@@ -2,6 +2,7 @@
 #define __SWITCH_H__
 
 #include <memory>
+#include <list>
 #include "enum.h"
 #include "Frame.h"
 #include "MacTable.h"

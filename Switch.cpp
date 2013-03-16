@@ -31,15 +31,15 @@ void Switch::receiveFrame(std::shared_ptr<Frame> frame) {
 }
 
 void Switch::sendFrame(std::shared_ptr<Frame> frame) {
+  std::shared_ptr<Device> sourceDevice = frame->getSourceDevice();
+  frame->setSourceDevice(static_cast<std::shared_ptr<Device>>(this));
   if(frame->getHeader()->getType() == DATALINK) {
     std::shared_ptr<DataLinkHeader> header = std::dynamic_pointer_cast<DataLinkHeader>(frame->getHeader());
-    if(!macTable.containsMac(header->getDestination())) {
+    if((header->getDestination() == Mac("FF:FF:FF:FF:FF:FF")) || (!macTable.containsMac(header->getDestination()))) {
+      macTable.sendFrameToAllNeighbourgs(frame, sourceDevice);
+    }
+    else
       macTable.getLineByMac(header->getDestination()).getNeighbourg()->receiveFrame(frame);
-    }
-    else {
-      //TODO : send the frame to all the neighbourgs
-    }
-    
   }
 }
 

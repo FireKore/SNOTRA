@@ -57,6 +57,14 @@ bool MacTable::containsMac(Mac mac) {
   return false;
 }
 
+void MacTable::sendFrameToAllNeighbourgs(std::shared_ptr<Frame> frame, std::shared_ptr<Device> device) {
+  for(std::list<MacTableLine>::iterator it = macTable.begin(); it != macTable.end(); it++) {
+    if(it->getNeighbourg() != device) {
+      it->getNeighbourg()->receiveFrame(frame);
+    }
+  }
+}
+
 
 
 //MacTableLine

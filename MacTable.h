@@ -5,6 +5,7 @@
 #include <memory>
 #include "Mac.h"
 #include "Device.h"
+#include "Frame.h"
 
 class MacTableLine {
  public:
@@ -35,6 +36,7 @@ class MacTable {
   void removeLineByDevice(std::shared_ptr<Device>);
   void resetMacTable();
   bool containsMac(Mac);
+  void sendFrameToAllNeighbourgs(std::shared_ptr<Frame>, std::shared_ptr<Device>);
 
 
  private:
