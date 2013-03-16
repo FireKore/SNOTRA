@@ -22,8 +22,39 @@ MacTableLine MacTable::getLineByMac(Mac mac) {
   return line;
 }
 
+MacTableLine MacTable::getLineByDevice(std::shared_ptr<Device> device) {
+  for(std::list<MacTableLine>::iterator it = macTable.begin(); it != macTable.end(); it++) {
+    if(it->getNeighbourg() == device) {
+      return *it;
+    }
+  }
+  MacTableLine line;
+  return line;
+}
+
 void MacTable::addLine(MacTableLine line) {
   macTable.push_back(line);
+}
+
+void MacTable::removeLineByDevice(std::shared_ptr<Device> device) {
+  for(std::list<MacTableLine>::iterator it = macTable.begin(); it != macTable.end(); it++) {
+    if(it->getNeighbourg() == device) {
+      macTable.erase(it);
+    }
+  }
+}
+
+void MacTable::resetMacTable() {
+  macTable.clear();
+}
+
+bool MacTable::containsMac(Mac mac) {
+  for(std::list<MacTableLine>::iterator it = macTable.begin(); it != macTable.end(); it++) {
+    if(it->getMac() == mac) {
+      return true;
+    }
+  }
+  return false;
 }
 
 

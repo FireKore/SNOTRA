@@ -14,11 +14,12 @@ class Hub : public Device {
   virtual ~Hub();
   void receiveFrame(std::shared_ptr<Frame>);
   void sendFrame(std::shared_ptr<Frame>);
-  std::list<std::shared_ptr<Device>> getNeighbours();
-  void addNeighbour(std::shared_ptr<Device>);
+  std::list<std::shared_ptr<Device>> getNeighbourgs();
+  void connectNeighbourg(std::shared_ptr<Device>);
+  void disconnectNeighbourg(std::shared_ptr<Device>);
 
  private:
-  std::list<std::shared_ptr<Device>> neighbours;
+  std::list<std::shared_ptr<Device>> neighbourgs;
 
 };
 

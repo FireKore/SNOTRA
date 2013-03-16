@@ -19,6 +19,8 @@ class Switch : public Device {
   void addNeighbourgToMacTable(Mac, std::shared_ptr<Device>);
   void receiveFrame(std::shared_ptr<Frame>);
   void sendFrame(std::shared_ptr<Frame>);
+  void connectNeighbourg(std::shared_ptr<Device>);
+  void disconnectNeighbourg(std::shared_ptr<Device>);
 
  private:
   MacTable macTable;

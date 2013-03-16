@@ -6,6 +6,7 @@
 #include "Frame.h"
 
 class Wire;
+class Frame;
 
 class Device {
  public:
