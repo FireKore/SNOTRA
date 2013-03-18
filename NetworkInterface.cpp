@@ -3,9 +3,10 @@
 NetworkInterface::NetworkInterface() {
 }
 
-NetworkInterface::NetworkInterface(Mac mac_, Ip* ip_) {
+NetworkInterface::NetworkInterface(Mac mac_, std::shared_ptr<Ip> ip_, std::shared_ptr<Device> neighbourg_) {
   ip = ip_;
   mac = mac_;
+  neighbourg = neighbourg_;
 }
 
 NetworkInterface::~NetworkInterface() {
@@ -19,19 +20,19 @@ void NetworkInterface::setMac(Mac mac_) {
   mac = mac_;
 }
 
-Ip* NetworkInterface::getIp() {
+std::shared_ptr<Ip> NetworkInterface::getIp() {
   return ip;
 }
 
-void NetworkInterface::setIp(Ip* ip_) {
+void NetworkInterface::setIp(std::shared_ptr<Ip> ip_) {
   ip = ip_;
 }
 
-MacTable NetworkInterface::getMacTable() {
-  return macTable;
+std::shared_ptr<Device> NetworkInterface::getNeighbourg() {
+  return neighbourg;
 }
 
-void NetworkInterface::setMacTable(MacTable table) {
-  macTable = table;
+void NetworkInterface::setNeighbourg(std::shared_ptr<Device> neighbourg_) {
+  neighbourg = neighbourg_;
 }
 

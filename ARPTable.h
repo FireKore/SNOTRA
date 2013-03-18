@@ -1,27 +1,25 @@
 #ifndef __ARPTABLE_H__
 #define __ARPTABLE_H__
 
+#include <memory>
 #include <list>
 #include "Mac.h"
 #include "Ip.h"
-#include "NetworkInterface.h"
 
 class ARPTableLine {
  public:
   ARPTableLine();
-  ARPTableLine(Ip*, Mac);
+  ARPTableLine(std::shared_ptr<Ip>, Mac);
   virtual ~ARPTableLine();
-  Ip* getIp();
-  void setIp(Ip*);
+  std::shared_ptr<Ip> getIp();
+  void setIp(std::shared_ptr<Ip>);
   Mac getMac();
   void setMac(Mac);
-  NetworkInterface getNetworkInterface();
-  void setNetworkInterface(NetworkInterface);
 
  private:
-  Ip* ip;
+  std::shared_ptr<Ip> ip;
   Mac mac;
-  //TODO : ajouter la gestion de la durée de vie.
+  //TODO : add the time to live
 
 };
 
@@ -30,7 +28,7 @@ class ARPTable {
   ARPTable();
   virtual ~ARPTable();
   std::list<ARPTableLine> getAllLines();
-  ARPTableLine getLineByIp(Ip* ip);
+  ARPTableLine getLineByIp(std::shared_ptr<Ip> ip);
   void addLine(ARPTableLine);
 
  private:

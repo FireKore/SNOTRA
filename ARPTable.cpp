@@ -3,7 +3,7 @@
 ARPTableLine::ARPTableLine() {
 }
 
-ARPTableLine::ARPTableLine(Ip* ip_, Mac mac_) {
+ARPTableLine::ARPTableLine(std::shared_ptr<Ip> ip_, Mac mac_) {
   ip = ip_;
   mac = mac_;
 }
@@ -11,11 +11,11 @@ ARPTableLine::ARPTableLine(Ip* ip_, Mac mac_) {
 ARPTableLine::~ARPTableLine() {
 }
 
-Ip* ARPTableLine::getIp() {
+std::shared_ptr<Ip> ARPTableLine::getIp() {
   return ip;
 }
 
-void ARPTableLine::setIp(Ip* ip_) {
+void ARPTableLine::setIp(std::shared_ptr<Ip> ip_) {
   ip = ip_;
 }
 
@@ -40,7 +40,7 @@ std::list<ARPTableLine> ARPTable::getAllLines() {
   return arpTable;
 }
 
-ARPTableLine ARPTable::getLineByIp(Ip* ip) {
+ARPTableLine ARPTable::getLineByIp(std::shared_ptr<Ip> ip) {
   for(std::list<ARPTableLine>::iterator it = arpTable.begin(); it != arpTable.end(); it++) {
     if(it->getIp() == ip) {
       return *it;
