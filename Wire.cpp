@@ -4,30 +4,48 @@
 Wire::Wire() {
 }
 
-Wire::Wire(Device* head_, Device* tail_) {
+Wire::Wire(std::shared_ptr<Device> head_, int headPort_, std::shared_ptr<Device> tail_, int tailPort_) {
   head = head_;
+  headPort = headPort_;
   tail = tail_;
+  tailPort = tailPort_;
 }
 
 Wire::~Wire() {
 }
 
-Device* Wire::getHead() {
+std::shared_ptr<Device> Wire::getHead() const{
   return head;
 }
 
-void Wire::setHead(Device* device) {
+void Wire::setHead(std::shared_ptr<Device> device) {
   head = device;
 }
 
-Device* Wire::getTail() {
+int Wire::getHeadPort() const{
+  return headPort;
+}
+
+void Wire::setHeadPort(int headPort_) {
+  headPort = headPort_;
+}
+
+std::shared_ptr<Device> Wire::getTail() const{
   return tail;
 }
 
-void Wire::setTail(Device* device) {
+void Wire::setTail(std::shared_ptr<Device> device) {
   tail = device;
 }
 
-void Wire::sendFrame(Frame* frame) {
-  tail->receiveFrame(frame);
+int Wire::getTailPort() const{
+  return tailPort;
+}
+
+void Wire::setTailPort(int tailPort_) {
+  tailPort = tailPort_;
+}
+
+void Wire::sendFrame(std::shared_ptr<Frame> frame) {
+  tail->receiveFrame(frame, tailPort);
 }

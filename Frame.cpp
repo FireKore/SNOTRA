@@ -3,10 +3,10 @@
 Frame::Frame() {
 }
 
-Frame::Frame(std::shared_ptr<Frame> frame, std::shared_ptr<Header> header_, std::shared_ptr<Device> device) {
+Frame::Frame(std::shared_ptr<Frame> frame, std::shared_ptr<Header> header_, int interfaceId_) {
   data = frame;
   header = header_;
-  sourceDevice = device;
+  interfaceId = interfaceId_;
 }
 
 Frame::~Frame() {
@@ -28,10 +28,10 @@ void Frame::setData(std::shared_ptr<Frame> frame) {
   data = frame;
 }
 
-std::shared_ptr<Device> Frame::getSourceDevice() {
-  return sourceDevice;
+int Frame::getInterfaceId() {
+  return interfaceId;
 }
 
-void Frame::setSourceDevice(std::shared_ptr<Device> device) {
-  sourceDevice = device;
+void Frame::setInterfaceId(int interfaceId_) {
+  interfaceId = interfaceId_;
 }

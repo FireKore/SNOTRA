@@ -8,90 +8,55 @@ MacTable::MacTable() {
 MacTable::~MacTable() {
 }
 
-std::list<MacTableLine> MacTable::getAllLines() {
+MacTable::MacTable(int numberOfInterface) {
+  for(int i = 1; i <= numberOfInterface; i++) {
+    macTable.insert(std::pair<int, std::list<Mac>>(i, std::list<Mac>()));
+  }
+}
+
+std::map<int, std::list<Mac>> MacTable::getAllLines() {
   return macTable;
 }
 
-MacTableLine MacTable::getLineByMac(Mac mac) {
-  for(std::list<MacTableLine>::iterator it = macTable.begin(); it != macTable.end(); it++) {
-    if(it->getMac() == mac) {
-      return *it;
-    }
-  }
-  MacTableLine line;
-  return line;
-}
-
-MacTableLine MacTable::getLineByDevice(std::shared_ptr<Device> device) {
-  for(std::list<MacTableLine>::iterator it = macTable.begin(); it != macTable.end(); it++) {
-    if(it->getNeighbourg() == device) {
-      return *it;
-    }
-  }
-  MacTableLine line;
-  return line;
-}
-
-void MacTable::addLine(MacTableLine line) {
-  macTable.push_back(line);
-}
-
-void MacTable::removeLineByDevice(std::shared_ptr<Device> device) {
-  for(std::list<MacTableLine>::iterator it = macTable.begin(); it != macTable.end(); it++) {
-    if(it->getNeighbourg() == device) {
-      macTable.erase(it);
-    }
-  }
-}
-
 void MacTable::resetMacTable() {
-  macTable.clear();
-}
-
-bool MacTable::containsMac(Mac mac) {
-  for(std::list<MacTableLine>::iterator it = macTable.begin(); it != macTable.end(); it++) {
-    if(it->getMac() == mac) {
-      return true;
-    }
-  }
-  return false;
-}
-
-void MacTable::sendFrameToAllNeighbourgs(std::shared_ptr<Frame> frame, std::shared_ptr<Device> device) {
-  for(std::list<MacTableLine>::iterator it = macTable.begin(); it != macTable.end(); it++) {
-    if(it->getNeighbourg() != device) {
-      it->getNeighbourg()->receiveFrame(frame);
-    }
+  for (auto& it : macTable) {
+    it.second.clear();
   }
 }
 
-
-
-//MacTableLine
-
-MacTableLine::MacTableLine() {
+int MacTable::containsMac(Mac mac) {
+  for (auto& it : macTable) {
+    for(auto& i : it.second) {
+      if(i == mac) {
+	return it.first;
+      }
+    }
+  }
+  return 0;
 }
 
-MacTableLine::MacTableLine(Mac mac_, std::shared_ptr<Device> device) {
-  mac = mac_;
-  neighbourg = device;
+void MacTable::saveMac(Mac mac, int interfaceId) {
+  int temp = containsMac(mac);
+  if(temp == 0) {
+    addMac(mac, interfaceId);
+  }
+  else {
+    //TODO : use the renew method once created on the mac in the interface
+  }
 }
 
-MacTableLine::~MacTableLine() {
+void MacTable::checkForDeletion() {
+  for(auto& it : macTable) {
+    for(auto& i : it.second) {
+      //TODO : test the ttl and delete the Mac if it expired
+    }
+  }
 }
 
-Mac MacTableLine::getMac() {
-  return mac;
+void MacTable::addMac(Mac mac, int interfaceId) {
+  macTable.at(interfaceId).push_back(mac);
 }
 
-void MacTableLine::setMac(Mac mac_) {
-  mac = mac_;
-}
-
-std::shared_ptr<Device> MacTableLine::getNeighbourg() {
-  return neighbourg;
-}
-
-void MacTableLine::setNeighbourg(std::shared_ptr<Device> device) {
-  neighbourg = device;
+void MacTable::removeMac(Mac mac, int interfaceId) {
+  macTable.at(interfaceId).remove(mac);
 }

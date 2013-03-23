@@ -1,12 +1,17 @@
 #include "Switch.h"
 
 Switch::Switch() {
+  macTable = MacTable(DEFAULT_NUMBER_OF_INTERFACE);
+}
+
+Switch::Switch(int numberOfInterface) {
+  macTable = MacTable(numberOfInterface);
 }
 
 Switch::~Switch() {
 }
 
-MacTable Switch::getMacTable() {
+MacTable Switch::getMacTable() const {
   return macTable;
 }
 
@@ -14,39 +19,22 @@ void Switch::setMacTable(MacTable macTable_) {
   macTable = macTable_;
 }
 
-void Switch::addNeighbourgToMacTable(Mac mac_, std::shared_ptr<Device> device) {
-  macTable.addLine(MacTableLine(mac_, device));
-}
-
-void Switch::receiveFrame(std::shared_ptr<Frame> frame) {
-  Device::receiveFrame(frame);
+void Switch::receiveFrame(std::shared_ptr<Frame> frame, int interfaceId) {
+  Device::receiveFrame(frame, interfaceId);
   std::shared_ptr<DataLinkHeader> header = std::dynamic_pointer_cast<DataLinkHeader>(frame->getHeader());
-  if(macTable.getLineByDevice(frame->getSourceDevice()).getMac() == Mac("00:00:00:00:00:00")) {
-    macTable.getLineByDevice(frame->getSourceDevice()).setMac(header->getSource());
-  }
-  else {
-    //TODO : use the renew function on the line in the mac table
-  }
+  
+  macTable.saveMac(header->getSource(), interfaceId);
   sendFrame(frame);
 }
 
 void Switch::sendFrame(std::shared_ptr<Frame> frame) {
-  std::shared_ptr<Device> sourceDevice = frame->getSourceDevice();
-  frame->setSourceDevice(static_cast<std::shared_ptr<Device>>(this));
-  if(frame->getHeader()->getType() == DATALINK) {
-    std::shared_ptr<DataLinkHeader> header = std::dynamic_pointer_cast<DataLinkHeader>(frame->getHeader());
-    if((header->getDestination() == Mac("FF:FF:FF:FF:FF:FF")) || (!macTable.containsMac(header->getDestination()))) {
-      macTable.sendFrameToAllNeighbourgs(frame, sourceDevice);
-    }
-    else
-      macTable.getLineByMac(header->getDestination()).getNeighbourg()->receiveFrame(frame);
+  std::shared_ptr<DataLinkHeader> header = std::dynamic_pointer_cast<DataLinkHeader>(frame->getHeader());
+  int temp = macTable.containsMac(header->getDestination());
+
+  if(temp == 0) {
+    Device::sendFrameBroadcast(frame, frame->getInterfaceId());
   }
-}
-
-void Switch::connectNeighbourg(std::shared_ptr<Device> newNeighbourg) {
-  addNeighbourgToMacTable(Mac("00:00:00:00:00:00"), newNeighbourg);
-}
-
-void Switch::disconnectNeighbourg(std::shared_ptr<Device> device) {
-  macTable.removeLineByDevice(device);
+  else {
+    Device::sendFrameUnicast(frame, temp);
+  }
 }

@@ -2,6 +2,7 @@
 *.[oa]
 *~
 /snotra
+*.old.*
 =======
 # Compiled Object files
 *.slo

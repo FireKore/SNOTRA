@@ -1,25 +1,34 @@
 #ifndef __WIRE_H__
 #define __WIRE_H__
 
+#include <memory>
 #include "Frame.h"
+#include "Device.h"
 
 class Device;
+class Frame;
 
 class Wire {
  public:
   Wire();
-  Wire(Device*, Device*);
+  Wire(std::shared_ptr<Device>, int, std::shared_ptr<Device>, int);
   virtual ~Wire();
-  Device* getHead();
-  void setHead(Device*);
-  Device* getTail();
-  void setTail(Device*);
+  std::shared_ptr<Device> getHead() const;
+  void setHead(std::shared_ptr<Device>);
+  int getHeadPort() const;
+  void setHeadPort(int);
+  std::shared_ptr<Device> getTail() const;
+  void setTail(std::shared_ptr<Device>);
+  int getTailPort() const;
+  void setTailPort(int);
 
-  void sendFrame(Frame*);
+  void sendFrame(std::shared_ptr<Frame>);
 
  private:
-  Device* head;
-  Device* tail;
+  std::shared_ptr<Device> head;
+  int headPort;
+  std::shared_ptr<Device> tail;
+  int tailPort;
 
 };
 

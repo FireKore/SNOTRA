@@ -2,26 +2,23 @@
 #define __SWITCH_H__
 
 #include <memory>
-#include <list>
-#include "enum.h"
 #include "Frame.h"
 #include "MacTable.h"
 #include "Mac.h"
 #include "Device.h"
 #include "DataLinkHeader.h"
 
+#define DEFAULT_NUMBER_OF_INTERFACE 6
 
 class Switch : public Device {
  public:
   Switch();
+  Switch(int);
   virtual ~Switch();
-  MacTable getMacTable();
+  MacTable getMacTable() const;
   void setMacTable(MacTable);
-  void addNeighbourgToMacTable(Mac, std::shared_ptr<Device>);
-  void receiveFrame(std::shared_ptr<Frame>);
+  void receiveFrame(std::shared_ptr<Frame>, int);
   void sendFrame(std::shared_ptr<Frame>);
-  void connectNeighbourg(std::shared_ptr<Device>);
-  void disconnectNeighbourg(std::shared_ptr<Device>);
 
  private:
   MacTable macTable;

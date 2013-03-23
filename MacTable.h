@@ -2,45 +2,25 @@
 #define __MACTABLE_H__
 
 #include <list>
-#include <memory>
+#include <map>
 #include "Mac.h"
-#include "Device.h"
-#include "Frame.h"
-
-class MacTableLine {
- public:
-  MacTableLine();
-  MacTableLine(Mac, std::shared_ptr<Device>);
-  virtual ~MacTableLine();
-  Mac getMac();
-  void setMac(Mac);
-  std::shared_ptr<Device> getNeighbourg();
-  void setNeighbourg(std::shared_ptr<Device>);
-  //TODO : Add a function to renew the ttl of the line
-
- private:
-  Mac mac;
-  std::shared_ptr<Device> neighbourg;
-  //TODO : Add the time to live of the line
-
-};
 
 class MacTable {
  public:
   MacTable();
+  MacTable(int);
   virtual ~MacTable();
-  std::list<MacTableLine> getAllLines();
-  MacTableLine getLineByMac(Mac);
-  MacTableLine getLineByDevice(std::shared_ptr<Device>);
-  void addLine(MacTableLine);
-  void removeLineByDevice(std::shared_ptr<Device>);
+  std::map<int, std::list<Mac>> getAllLines();
   void resetMacTable();
-  bool containsMac(Mac);
-  void sendFrameToAllNeighbourgs(std::shared_ptr<Frame>, std::shared_ptr<Device>);
-
+  int containsMac(Mac);
+  void saveMac(Mac, int);
+  void checkForDeletion();
 
  private:
-  std::list<MacTableLine> macTable;
+  std::map<int, std::list<Mac>> macTable;
+
+  void addMac(Mac, int);
+  void removeMac(Mac, int);
 
 };
 
