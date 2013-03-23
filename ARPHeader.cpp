@@ -3,7 +3,7 @@
 ARPHeader::ARPHeader() {
 }
 
-ARPHeader::ARPHeader(Ip sourceIp, Ip destinationIp, int ttl, Protocole protocole, Mac source, Mac destination, bool isAnswer) : NetworkHeader(sourceIp, destinationIp, ttl, protocole, isAnswer) {
+ARPHeader::ARPHeader(std::shared_ptr<Ip> sourceIp, std::shared_ptr<Ip> destinationIp, int ttl, Protocole protocole, Mac source, Mac destination, bool isAnswer) : NetworkHeader(sourceIp, destinationIp, ttl, protocole, isAnswer) {
   sourceMac = source;
   destinationMac = destination;
 }

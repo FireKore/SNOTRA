@@ -1,55 +1,33 @@
 #include "ARPTable.h"
 
-ARPTableLine::ARPTableLine() {
-}
-
-ARPTableLine::ARPTableLine(std::shared_ptr<Ip> ip_, Mac mac_) {
-  ip = ip_;
-  mac = mac_;
-}
-
-ARPTableLine::~ARPTableLine() {
-}
-
-std::shared_ptr<Ip> ARPTableLine::getIp() {
-  return ip;
-}
-
-void ARPTableLine::setIp(std::shared_ptr<Ip> ip_) {
-  ip = ip_;
-}
-
-Mac ARPTableLine::getMac() {
-  return mac;
-}
-
-void ARPTableLine::setMac(Mac mac_) {
-  mac = mac_;
-}
-
-
-//ARPTable
-
 ARPTable::ARPTable() {
 }
 
 ARPTable::~ARPTable() {
 }
 
-std::list<ARPTableLine> ARPTable::getAllLines() {
+std::map<std::shared_ptr<Ip>, Mac> ARPTable::getAllLines() {
   return arpTable;
 }
 
-ARPTableLine ARPTable::getLineByIp(std::shared_ptr<Ip> ip) {
-  for(std::list<ARPTableLine>::iterator it = arpTable.begin(); it != arpTable.end(); it++) {
-    if(it->getIp() == ip) {
-      return *it;
-    }
-  }
-  ARPTableLine line;
-  return line;
+void ARPTable::resetARPTable() {
+  arpTable.clear();
 }
 
-void ARPTable::addLine(ARPTableLine line) {
-  arpTable.push_back(line);
+Mac ARPTable::getMacByIp(std::shared_ptr<Ip> ip) {
+  return arpTable.at(ip);
+}
+
+void ARPTable::addLine(std::shared_ptr<Ip> ip, Mac mac) {
+  arpTable.insert(std::pair<std::shared_ptr<Ip>, Mac>(ip, mac));
+}
+
+void ARPTable::checkForDeletion() {
+  for(auto& it : arpTable) {
+    //TODO : test the ttl and delete the Mac if it expired
+  }
+}
+
+void ARPTable::removeLine(std::shared_ptr<Ip> ip) {
+  arpTable.erase(ip);
 }

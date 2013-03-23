@@ -7,7 +7,7 @@
 class ARPHeader : public NetworkHeader {
  public:
   ARPHeader();
-  ARPHeader(Ip, Ip, int, Protocole, Mac, Mac, bool);
+  ARPHeader(std::shared_ptr<Ip>, std::shared_ptr<Ip>, int, Protocole, Mac, Mac, bool);
   virtual ~ARPHeader();
   Mac getSourceMac();
   void setSourceMac(Mac);

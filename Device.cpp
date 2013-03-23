@@ -40,3 +40,7 @@ void Device::receiveFrame(std::shared_ptr<Frame> frame, int interfaceId) {
 void Device::connectNeighbour(std::shared_ptr<Device> neighbour, int thisId, int neighbourId) {
   wires.insert(std::pair<int, Wire>(thisId, Wire((std::shared_ptr<Device>)this, thisId, neighbour, neighbourId)));
 }
+
+void Device::disconnectNeighbour(int interfaceId) {
+  wires.erase(interfaceId);
+}

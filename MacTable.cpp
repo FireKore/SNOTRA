@@ -1,17 +1,15 @@
 #include "MacTable.h"
 
-//MacTable
-
 MacTable::MacTable() {
-}
-
-MacTable::~MacTable() {
 }
 
 MacTable::MacTable(int numberOfInterface) {
   for(int i = 1; i <= numberOfInterface; i++) {
     macTable.insert(std::pair<int, std::list<Mac>>(i, std::list<Mac>()));
   }
+}
+
+MacTable::~MacTable() {
 }
 
 std::map<int, std::list<Mac>> MacTable::getAllLines() {

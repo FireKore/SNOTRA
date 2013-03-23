@@ -3,28 +3,25 @@
 Ip::Ip() {
 }
 
-Ip::Ip(std::string address_) {
-  unsigned int pos = 0;
-  int temp;
-  std::string buffer;
-  std::transform(address_.begin(), address_.end(), address_.begin(), ::toupper);
-  while(pos < address_.length()) {
-    buffer = this->getSubstring(address_, pos);
-    pos += buffer.length() + 1;
-    std::istringstream iss(buffer);
-    iss >> temp;
-    address.push_back((char)temp);
-  }
+Ip::Ip(const Ip& ip) : address(ip.address), mask(ip.mask) {
+}
+
+Ip::Ip(std::list<unsigned char> address_) {
+  address = address_;
 }
 
 Ip::~Ip() {
 }
 
-std::list<unsigned char> Ip::getAddress() {
+std::list<unsigned char> Ip::getAddress() const {
   return address;
 }
 
-Mask Ip::getMask() {
+void Ip::addCharToAddress(unsigned char chr) {
+  address.push_back(chr);
+}
+
+Mask Ip::getMask() const {
   return mask;
 }
 
@@ -32,8 +29,8 @@ void Ip::setMask(Mask mask_) {
   mask = mask_;
 }
 
-bool operator==(Ip ip1, Ip ip2) {
-  for(std::list<unsigned char>::iterator it1 = ip1.getAddress().begin(), it2 = ip2.getAddress().begin(); it1 != ip1.getAddress().end(), it2 != ip2.getAddress().end(); it1++, it2++) {
+bool Ip::operator==(const Ip& other) const{
+  for(std::list<unsigned char>::const_iterator it1 = address.begin(), it2 = other.getAddress().begin(); it1 != address.end(), it2 != other.getAddress().end(); it1++, it2++) {
     if(*it1 != *it2) {
       return false;
     }
@@ -41,19 +38,11 @@ bool operator==(Ip ip1, Ip ip2) {
   return true;
 }
 
-
-std::string Ip::toString() {
-  return 0;
-}
-
-std::string Ip::toStringFull() {
-  return 0;
-}
-
-std::list<unsigned char> Ip::getNetwork() {
-  return (std::list<unsigned char>)0;
-}
-
-std::string Ip::getSubstring(std::string str, int i) {
-  return 0;
+bool Ip::operator<(const Ip& other) const{
+  for(std::list<unsigned char>::const_iterator it1 = address.begin(), it2 = other.getAddress().begin(); it1 != address.end(), it2 != other.getAddress().end(); it1++, it2++) {
+    if(*it1 != *it2) {
+      return *it1 < *it2;
+    }
+  }
+  return true;
 }

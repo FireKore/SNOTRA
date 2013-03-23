@@ -8,11 +8,12 @@ class Ipv4 : public Ip{
   Ipv4();
   Ipv4(std::string);
   virtual ~Ipv4();
+  virtual std::string toString() const;
+  virtual std::string toStringFull() const;
+  virtual std::list<unsigned char> getNetwork() const;
   virtual std::string getSubstring(std::string, int);
-  virtual std::string toString();
-  virtual std::string toStringFull();
-  virtual bool isSameNetwork(Ipv4);
-  virtual std::list<unsigned char> getNetwork();
+
+ protected:
 
  private:
 

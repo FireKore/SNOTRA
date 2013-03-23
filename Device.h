@@ -20,7 +20,8 @@ class Device {
   void sendFrameUnicast(std::shared_ptr<Frame>, int);
   virtual void receiveFrame(std::shared_ptr<Frame>, int);
   virtual void sendFrame(std::shared_ptr<Frame>) = 0;
-  virtual void connectNeighbour(std::shared_ptr<Device>, int, int);
+  void connectNeighbour(std::shared_ptr<Device>, int, int);
+  void disconnectNeighbour(int);
 
  private:
   std::list<std::shared_ptr<Frame>> frameHistory;

@@ -3,7 +3,7 @@
 ICMPHeader::ICMPHeader() {
 }
 
-ICMPHeader::ICMPHeader(Ip ip, bool isAnswer) : TransportHeader(isAnswer) {
+ICMPHeader::ICMPHeader(std::shared_ptr<Ip> ip, bool isAnswer) : TransportHeader(isAnswer) {
   sourceIp = ip;
   creationTime = time(&creationTime);
 }
@@ -23,10 +23,10 @@ void ICMPHeader::setTimeNow() {
   creationTime = time(&creationTime);
 }
 
-Ip ICMPHeader::getSourceIp() {
+std::shared_ptr<Ip> ICMPHeader::getSourceIp() {
   return sourceIp;
 }
 
-void ICMPHeader::setSourceIp(Ip ip) {
+void ICMPHeader::setSourceIp(std::shared_ptr<Ip> ip) {
   sourceIp = ip;
 }
