@@ -3,10 +3,9 @@
 DataLinkHeader::DataLinkHeader() : Header(DATALINK, true) {
 }
 
-DataLinkHeader::DataLinkHeader(Mac source_, Mac destination_, Type type_, bool isAnswer) : Header(DATALINK, isAnswer) {
+DataLinkHeader::DataLinkHeader(Mac source_, Mac destination_, bool isAnswer) : Header(DATALINK, isAnswer) {
   source = source_;
   destination = destination_;
-  type = type_;
 }
 
 DataLinkHeader::~DataLinkHeader() {

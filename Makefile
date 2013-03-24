@@ -33,7 +33,7 @@ Hub.o: Hub.h Device.h Frame.h
 Switch.o: Switch.h Frame.h MacTable.h Mac.h Device.h DataLinkHeader.h enum.h
 MacTable.o: MacTable.h Mac.h Device.h Frame.h
 DeviceN4.o: DeviceN4.h Device.h
-NetworkInterface.o: NetworkInterface.h Frame.h Ip.h Mac.h
+NetworkInterface.o: NetworkInterface.h Frame.h Ip.h Mac.h Header.h DataLinkHeader.h
 ARPTable.o: ARPTable.h Mac.h Ip.h
 RoutingTable.o: RoutingTable.h Ip.h Mask.h NetworkInterface.h Device.h
 Wire.o: Wire.h Device.h Frame.h
