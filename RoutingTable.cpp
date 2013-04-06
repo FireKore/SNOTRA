@@ -20,7 +20,7 @@ std::pair<std::shared_ptr<Ip>, int> RoutingTable::getLineByIp(std::shared_ptr<Ip
       return it.second;
     }
   }
-  return std::pair<std::shared_ptr<Ip>, int>((std::shared_ptr<Ip>)0, 0);
+  return std::pair<std::shared_ptr<Ip>, int>((std::shared_ptr<Ip>)0, -1);
 }
 
 void RoutingTable::addLine(std::shared_ptr<Ip> destination, std::shared_ptr<Ip> gateway, int interfaceId) {

@@ -10,7 +10,7 @@ class Hub : public Device {
  public:
   Hub();
   virtual ~Hub();
-  void receiveFrame(std::shared_ptr<Frame>, int);
+  void receiveFrame(std::shared_ptr<Frame>, int, int);
   void sendFrame(std::shared_ptr<Frame>);
 
  private:

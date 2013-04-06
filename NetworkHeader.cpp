@@ -33,6 +33,10 @@ int NetworkHeader::getTimeToLive() {
   return timeToLive;
 }
 
+void NetworkHeader::decreaseTimeToLive() {
+  timeToLive--;
+}
+
 void NetworkHeader::setTimeToLive(int ttl) {
   timeToLive = ttl;
 }

@@ -16,6 +16,7 @@ class NetworkHeader : public Header {
   std::shared_ptr<Ip> getDestination();
   void setDestination(std::shared_ptr<Ip>);
   int getTimeToLive();
+  void decreaseTimeToLive();
   void setTimeToLive(int);
   Protocole getProtocole();
   void setProtocole(Protocole);
